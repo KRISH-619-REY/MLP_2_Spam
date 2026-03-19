@@ -1,4 +1,4 @@
-flask
-onnxruntime
-numpy
-tensorflow
+flask==2.3.3
+onnxruntime==1.17.0
+numpy==1.26.4
+tensorflow-cpu==2.15.0
