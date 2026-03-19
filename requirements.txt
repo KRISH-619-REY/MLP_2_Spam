@@ -2,3 +2,4 @@ streamlit
 numpy
 onnxruntime
 scikit-learn
+keras 
