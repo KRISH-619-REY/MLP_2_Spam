@@ -12,7 +12,7 @@ def pad_sequences(sequences, maxlen):
     return padded
 
 # Load model and tokenizer
-session    = ort.InferenceSession("app/spam_model.onnx")
+session    = ort.InferenceSession("spam_model.onnx")
 input_name = session.get_inputs()[0].name
 
 with open("app/tokenizer.pkl", "rb") as f:
