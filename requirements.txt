@@ -1,4 +1,5 @@
-streamlit
-numpy
-onnxruntime
- 
+streamlit>=1.35.0
+onnxruntime>=1.18.0
+scikit-learn>=1.3.0
+nltk>=3.8.0
+numpy>=1.26.0
