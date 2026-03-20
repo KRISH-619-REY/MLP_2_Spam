@@ -15,8 +15,8 @@ def pad_sequences(sequences, maxlen):
 session    = ort.InferenceSession("spam_model.onnx")
 input_name = session.get_inputs()[0].name
 
-with open("tokenizer.pkl", "rb") as f:
-    tokenizer = pickle.load(f)
+with open("word_index.pkl", "rb") as f:
+    word_index = pickle.load(f)
 
 MAXLEN = 100
 
