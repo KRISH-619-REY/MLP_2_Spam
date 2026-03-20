@@ -25,11 +25,21 @@ st.write("Detect spam messages automatically")
 
 text = st.text_area("Enter SMS message here")
 
+import re
+
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9 ]', '', text)
+    return text
+
 if st.button("Analyse"):
     if text.strip():
-        seq    = [word_index.get(word, 0) for word in text.split()]
+
+        cleaned = clean_text(text)
+        seq = [word_index.get(word, 0) for word in cleaned.split()]
         padded = pad_sequences([seq], maxlen=MAXLEN)
         result = session.run(None, {input_name: padded})
+
         prob   = float(result[0][0][0])
         label  = "SPAM 🚨" if prob >= 0.5 else "HAM ✅"
         conf   = prob if prob >= 0.5 else 1 - prob
