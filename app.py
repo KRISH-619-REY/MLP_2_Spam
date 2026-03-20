@@ -27,8 +27,8 @@ text = st.text_area("Enter SMS message here")
 
 if st.button("Analyse"):
     if text.strip():
-        seq    = tokenizer.texts_to_sequences([text])
-        padded = pad_sequences(seq, maxlen=MAXLEN)
+        seq    = [word_index.get(word, 0) for word in text.split()]
+        padded = pad_sequences([seq], maxlen=MAXLEN)
         result = session.run(None, {input_name: padded})
         prob   = float(result[0][0][0])
         label  = "SPAM 🚨" if prob >= 0.5 else "HAM ✅"
