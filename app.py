@@ -153,6 +153,9 @@ def load_artifacts():
         le = pickle.load(f)
     return session, tfidf, le
 
+MODEL_LOADED = False  
+LOAD_ERROR = ""  
+
 try:
     session, tfidf, le = load_artifacts()
     INPUT_NAME  = session.get_inputs()[0].name
@@ -172,7 +175,7 @@ def preprocess(text: str) -> str:
     tokens = [t for t in tokens
               if t not in string.punctuation and t not in _stop_words]
     tokens = [_lemmatizer.lemmatize(t) for t in tokens]
-    return "".join(tokens)
+    return " ".join(tokens)
 
 def classify(text: str):
     processed = preprocess(text)
